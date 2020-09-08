@@ -1,5 +1,1 @@
-zsh-users/zsh-completions
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
-zdharma/fast-syntax-highlighting
-romkatv/powerlevel10k
+.homesick/repos/dotfiles/home/.zsh_plugins.txt
