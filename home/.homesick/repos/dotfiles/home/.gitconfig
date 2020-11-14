@@ -1,3 +1,5 @@
 [user]
 	name = Alonso Martinez
 	email = alonso.mtz99@gmail.com
+[credential]
+	helper = cache

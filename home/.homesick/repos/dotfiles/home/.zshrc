@@ -138,3 +138,6 @@ unset __conda_setup
 
 # Homeshick para sincronizar configuraciones
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+# Ctrl-S to save
+# enable control-s and control-q
+vim() STTY=-ixon command vim "$@"
