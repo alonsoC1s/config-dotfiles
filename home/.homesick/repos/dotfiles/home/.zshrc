@@ -62,10 +62,15 @@ mod () {
   if [[ $# != 0 ]]; then 
     if [[ $1 == "-zsh" ]]; then 
       echo "Abriendo configuración de terminal" && 
-      code ~/.zshrc
+      vim ~/.zshrc
     elif [[ $1 == "-code-latex" ]]; then 
       echo "Abriendo configuración de snippets para .latex en vscode" && 
-      code ~/Library/"Application Support"/Code/User/snippets/latex.json
+	elif [[ $1 == "-vim" ]]; then 
+      echo "Abriendo vimrc" && 
+      vim ~/.vimrc
+    elif [[ $1 == "-vim-plugins" ]]; then 
+      echo "Abriendo plugins de Vim" && 
+      vim ~/.vim/plugins.vim
     else 
       echo "Opción desconocida"
     fi 

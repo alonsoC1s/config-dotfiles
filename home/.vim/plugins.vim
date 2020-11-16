@@ -1,14 +1,12 @@
 call plug#begin('~/.vim/plugged')
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
+"   Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'chuling/ci_dark'
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-" Lightline
-set laststatus=2
-set noshowmode
