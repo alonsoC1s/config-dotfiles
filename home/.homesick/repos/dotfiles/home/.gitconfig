@@ -3,3 +3,5 @@
 	email = alonso.mtz99@gmail.com
 [credential]
 	helper = cache
+[core]
+	editor = vim
