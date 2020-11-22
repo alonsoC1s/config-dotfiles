@@ -1,7 +1,7 @@
 syntax on
 
 set encoding=utf-8
-set relativenumber
+set number relativenumber "Hybrid number mode
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set smartindent
@@ -13,14 +13,23 @@ set smartindent
 set vb t_vb= " Disable bell sonds
 set hidden " hidden buffers
 set noshowmode " Quita el --INSERT-- inecesario
+set nobackup
+set nowritebackup
+set cmdheight=2 " sugerido por coc
+set updatetime=300 " Sugerencias más rápidas por Coc
+" Folding
+set foldmethod=indent
+
+let maplocalleader=" "
+let mapleader=","
+
+
 " Plugins "
 
 " Vimtex. Imperativo que vaya antes de plugin load
 let g:vimtex_imaps_leader = '@'
 
-
 " Install and run vim-plug on first run
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -34,10 +43,66 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
-let maplocalleader=" "
-let mapleader=","
+" CoC Nvim
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" NerdTree 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" NerdTree
 map <C-ñ> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -87,17 +152,9 @@ nmap <silent> <C-j> <Plug>(ale_next)
 
 " Toggle ALE quick list
 noremap <Leader>ñ :call QFixToggle()<CR>
+nmap <F10> :ALEFix<CR>
+let g:ale_fix_on_save = 1
 
-function! QFixToggle()
-  if exists("g:qfix_win")
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
-endfunction
- 
 " Remaps de ThePrimogean
 " Remaps para ventanas
 map <leader>h :wincmd h<CR> " window left
