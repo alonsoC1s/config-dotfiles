@@ -11,5 +11,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
 Plug   'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for tex conceal
 Plug 'dense-analysis/ale'
+Plug 'liuchengxu/vim-which-key' " which key
+Plug 'tpope/vim-commentary'
 call plug#end()
 

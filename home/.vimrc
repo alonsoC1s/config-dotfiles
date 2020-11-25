@@ -18,7 +18,7 @@ set nowritebackup
 set cmdheight=2 " sugerido por coc
 set updatetime=300 " Sugerencias más rápidas por Coc
 " Folding
-set foldmethod=indent
+set foldmethod=syntax
 
 let maplocalleader=" "
 let mapleader=","
@@ -28,6 +28,8 @@ let mapleader=","
 
 " Vimtex. Imperativo que vaya antes de plugin load
 let g:vimtex_imaps_leader = '@'
+" ALE configuracion con Coc. Va antes del load
+let g:ale_disable_lsp = 1
 
 " Install and run vim-plug on first run
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -91,7 +93,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <localleader>rn <Plug>(coc-rename)
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -155,6 +157,14 @@ noremap <Leader>ñ :call QFixToggle()<CR>
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 
+let g:ale_sign_error = '🔴'
+let g:ale_sign_warning = '--'
+
+" WhickKey
+" nnoremap <silent> <leader> :WhichKey '<leader>'<CR>
+" nnoremap <silent> <localleader> :WhichKey '<localleader>'<CR>
+" set timeoutlen=500
+
 " Remaps de ThePrimogean
 " Remaps para ventanas
 map <leader>h :wincmd h<CR> " window left
@@ -162,3 +172,5 @@ map <leader>l :wincmd l<CR> " window right
 map <leader>j :wincmd j<CR> " window down
 map <leader>k :wincmd k<CR> " window up
 map <leader>q :wincmd q<CR> " window quit
+
+hi Normal guibg=NONE ctermbg=NONE

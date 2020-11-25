@@ -54,6 +54,7 @@ alias gbD='git branch -D'
 alias glog='git log --oneline --decorate'
 alias gtree='git log --graph --oneline --decorate'
 alias gcl='git clone'
+alias gdi='git diff'
 
 alias rld='source ~/.zshrc'
 
