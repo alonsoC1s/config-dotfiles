@@ -120,7 +120,9 @@ colorscheme ci_dark
 " Airline
 let g:airline_theme = 'ci_dark'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts=1
+" let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#ale#enabled = 1
 
 " vimtex
