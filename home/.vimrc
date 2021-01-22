@@ -15,7 +15,7 @@ set hidden " hidden buffers
 set noshowmode " Quita el --INSERT-- inecesario
 set nobackup
 set nowritebackup
-set cmdheight=2 " sugerido por coc
+" set cmdheight=2 " sugerido por coc
 set updatetime=300 " Sugerencias más rápidas por Coc
 " Folding
 set foldmethod=syntax
@@ -122,8 +122,19 @@ let g:airline_theme = 'ci_dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts=1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 1
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.branch = ''
+let g:airline_symbols.dirty='!'
 
 " vimtex
 let g:tex_flavor = 'latex'
@@ -137,7 +148,7 @@ let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
 " ALE
 let g:ale_linters = {
-\	'python': ['pylint', 'flake8'],
+\	'python': ['pylint', 'flake8', 'prospector'],
 \}
 
 let g:ale_fixers = {
@@ -149,30 +160,49 @@ let g:ale_sign_column_always = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_change = 1
 nmap <F10> :ALEFix<CR>
+let g:ale_echo_msg_format = '%linter% says: %s'
 
 " Map movement through errors without wrapping.
 nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
 
 " Toggle ALE quick list
-noremap <Leader>ñ :call QFixToggle()<CR>
+noremap <Leader>f :call QFixToggle()<CR>
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 
-let g:ale_sign_error = '🔴'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '❯'
 
 " WhickKey
-" nnoremap <silent> <leader> :WhichKey '<leader>'<CR>
-" nnoremap <silent> <localleader> :WhichKey '<localleader>'<CR>
-" set timeoutlen=500
+nnoremap <silent> <leader> :WhichKey '<leader>'<CR>
+nnoremap <silent> <localleader> :WhichKey '<localleader>'<CR>
+set timeoutlen=500
 
-" Remaps de ThePrimogean
-" Remaps para ventanas
-map <leader>h :wincmd h<CR> " window left
-map <leader>l :wincmd l<CR> " window right
+" Floterm
+let g:floaterm_height=0.95
+let g:floaterm_width=0.95
+let g:floaterm_autoclose=1
+" Remaps útiles. Toggle está repetido a propósito
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+" remaps t
+nnoremap   <silent>   <localleader>tt   :FloatermToggle<CR>
+nnoremap   <silent>   <localleader>tp   :FloatermNew --width=0.5 --wintype=normal --position=right ipython<CR>
+nnoremap   <silent>   <localleader>tr   :FloatermNew --width=0.5 --wintype=normal --position=right <CR>
+nnoremap   <silent>   <localleader>ta   :%FloatermRepl<CR>
+" tnoremap <Esc> <C-\><C-n>
+
+" " Remaps de ThePrimogean
+" " Remaps para ventanas
 map <leader>j :wincmd j<CR> " window down
 map <leader>k :wincmd k<CR> " window up
 map <leader>q :wincmd q<CR> " window quit
+map <C-h> :wincmd h<CR>
+map <C-l> :wincmd l<CR>
+" remaps necesarios para poder moverse igual en terminal mode
+tnoremap <C-h> <C-\><C-n>:wincmd h<CR>
+tnoremap <C-l> <C-\><C-n>:wincmd l<CR>
 
 hi Normal guibg=NONE ctermbg=NONE
+" hi Floaterm guibg=NONE guifg=NONE ctermbg=NONE
