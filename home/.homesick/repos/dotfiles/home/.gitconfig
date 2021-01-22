@@ -2,6 +2,6 @@
 	name = Alonso Martinez
 	email = alonso.mtz99@gmail.com
 [credential]
-	helper = cache
+	helper = store
 [core]
 	editor = vim
