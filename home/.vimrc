@@ -13,6 +13,9 @@ set smartindent
 set vb t_vb= " Disable bell sonds
 set hidden " hidden buffers
 set noshowmode " Quita el --INSERT-- inecesario
+" Auto-wrapping de ancho de texto
+set formatoptions+=aw
+set tw=100 " Preferencia de pylint y prospector
 set nobackup
 set nowritebackup
 " set cmdheight=2 " sugerido por coc
@@ -148,7 +151,7 @@ let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
 " ALE
 let g:ale_linters = {
-\	'python': ['pylint', 'flake8', 'prospector'],
+\	'python': ['flake8', 'prospector'],
 \}
 
 let g:ale_fixers = {
@@ -167,7 +170,8 @@ nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
 
 " Toggle ALE quick list
-noremap <Leader>f :call QFixToggle()<CR>
+" noremap <Leader>f :call QFixToggle()<CR> " Comentado porque no funciona y no
+" se de dónde salió
 nmap <F10> :ALEFix<CR>
 let g:ale_fix_on_save = 1
 
@@ -187,10 +191,11 @@ let g:floaterm_autoclose=1
 nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
 " remaps t
-nnoremap   <silent>   <localleader>tt   :FloatermToggle<CR>
+" nnoremap   <silent>   <localleader>tt   :FloatermToggle<CR>
 nnoremap   <silent>   <localleader>tp   :FloatermNew --width=0.5 --wintype=normal --position=right ipython<CR>
 nnoremap   <silent>   <localleader>tr   :FloatermNew --width=0.5 --wintype=normal --position=right <CR>
-nnoremap   <silent>   <localleader>ta   :%FloatermRepl<CR>
+nnoremap   <silent>   <localleader>ta   :FloatermRepl<CR>
+nnoremap   <silent>   <localleader>th   :FloatermNew htop<CR>
 " tnoremap <Esc> <C-\><C-n>
 
 " " Remaps de ThePrimogean
