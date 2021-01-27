@@ -150,6 +150,10 @@ let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
 let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
 " ALE
+" N803 : argument name should be lowercase
+" N802 : function name should be lowercas
+" N806 : variable name in funcion should be lowercase
+let g:ale_python_flake8_options = "--ignore N803,N802,N806"
 let g:ale_linters = {
 \	'python': ['flake8', 'prospector'],
 \}
