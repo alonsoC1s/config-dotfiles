@@ -12,7 +12,7 @@ antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 source ~/.zsh_plugins.sh
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/alonso/.oh-my-zsh"
+export ZSH="/Users/alonsomartinez/.oh-my-zsh"
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/usr/games
 
@@ -60,38 +60,38 @@ alias rld='source ~/.zshrc'
 
 # Comando para abrir la configuración personalizada de terminal & snippets vscode
 mod () {
-  if [[ $# != 0 ]]; then 
-    if [[ $1 == "-zsh" ]]; then 
-      echo "Abriendo configuración de terminal" && 
+  if [[ $# != 0 ]]; then
+    if [[ $1 == "-zsh" ]]; then
+      echo "Abriendo configuración de terminal" &&
       vim ~/.zshrc
-    elif [[ $1 == "-code-latex" ]]; then 
-      echo "Abriendo configuración de snippets para .latex en vscode" && 
-	elif [[ $1 == "-vim" ]]; then 
-      echo "Abriendo vimrc" && 
+    elif [[ $1 == "-code-latex" ]]; then
+      echo "Abriendo configuración de snippets para .latex en vscode" &&
+	elif [[ $1 == "-vim" ]]; then
+      echo "Abriendo vimrc" &&
       vim ~/.vimrc
-    elif [[ $1 == "-vim-plugins" ]]; then 
-      echo "Abriendo plugins de Vim" && 
+    elif [[ $1 == "-vim-plugins" ]]; then
+      echo "Abriendo plugins de Vim" &&
       vim ~/.vim/plugins.vim
-    else 
+    else
       echo "Opción desconocida"
-    fi 
-  else 
-    echo "No hay suficientes argumentos \nOpciones: \n\t 1. -zsh \n\t 2. -code-latex" 
+    fi
+  else
+    echo "No hay suficientes argumentos \nOpciones: \n\t 1. -zsh \n\t 2. -code-latex"
   fi
 }
 
 
 # tytex actua como envoltorio para tlmgr
 tytex () {
-  if [[ $# != 0 ]]; then 
-    if [[ $1 == "search" ]]; then 
+  if [[ $# != 0 ]]; then
+    if [[ $1 == "search" ]]; then
       tlmgr search --global --file "/$2"
-    elif [[ $1 == "install" ]]; then 
+    elif [[ $1 == "install" ]]; then
       tlmgr install $2
     else
       echo "Opción desconocida"
     fi
-  else 
+  else
     echo "No hay suficientes argumentos \nOpciones: \n\t 1. search \n\t 2. install"
   fi
 }
