@@ -1,4 +1,4 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
+set runtimepath^=/.vim runtimepath+=/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
 
@@ -20,7 +20,7 @@ lua << EOF
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'nord',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
@@ -82,7 +82,7 @@ EOF
 " menuone: popup even when there's only one match
 " noinsert: Do not insert text until a selection is made
 " noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
@@ -115,6 +115,7 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 " Setup Completion
 " See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 lua <<EOF
+--[[
 local cmp = require'cmp'
 cmp.setup({
   snippet = {
@@ -141,13 +142,14 @@ cmp.setup({
   -- Installed sources
 	sources = cmp.config.sources {
 		{ name = 'omni', keyword_lenght = 0 },
-		{ name = 'ultisnips' },
+		-- { name = 'ultisnips' },
 		{ name = 'nvim_lsp' },
 		-- { name = 'vsnip' },
 		-- { name = 'path' },
 		-- { name = 'buffer' },
 	}
 })
+--]]
 EOF
 
 " have a fixed column for the diagnostics to appear in
@@ -158,7 +160,7 @@ set signcolumn=yes
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=300
 " Show diagnostic popup on cursor hover
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>

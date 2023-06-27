@@ -10,7 +10,7 @@ Plug 'liuchengxu/vista.vim'
 
 " LaTeX writing
 Plug 'lervag/vimtex'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 " Plug   'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for tex conceal
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -18,7 +18,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'mhinz/vim-startify'
 
 " Colorschemes
-" Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 " Plug 'tjdevries/colorbuddy.nvim'
 " Plug 'maaslalani/nordbuddy'
@@ -42,6 +42,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'JuliaEditorSupport/julia-vim'
 " Rust
 Plug 'simrat39/rust-tools.nvim'
+" R
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+
+" Spellchecking
+Plug 'rhysd/vim-grammarous'
 
 " Completion framework
 Plug 'hrsh7th/nvim-cmp'
@@ -55,8 +60,8 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-omni'
 
 " Snippet engine
-Plug 'hrsh7th/vim-vsnip'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips' " Completion for ultisnips
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'quangnguyen30192/cmp-nvim-ultisnips' " Completion for ultisnips
 " Plug 'hrsh7th/vim-vsnip-integ'
 
 Plug 'nvim-lua/popup.nvim'
